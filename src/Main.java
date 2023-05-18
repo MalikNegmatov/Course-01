@@ -51,14 +51,18 @@ public class Main {
     }
     public static void main(String[] args) {
 
-        eList[0] = new Employee("Арсений", "Петрович", "сказка", 2, 203912);
-        eList[1] = new Employee("Виталий", "Петрович", "сказка", 3, 123123);
+        eList[0] = new Employee("Арсений", "Петрович", "присказка", 2, 203912);
+        eList[1] = new Employee("Виталий", "Петрович", "подсказка", 3, 123123);
         eList[2] = new Employee("Корней", "Петрович", "сказка", 4, 142124);
         eList[3] = new Employee("Лариса", "Петровна", "расказова", 5, 242124);
         printList(eList);
         System.out.println("Сумма затрат на зарплаты в месяц = " + allSalarySum(eList));
         System.out.println("Сотрудник с минимальной зарплатой : " + eList[searchLooser(eList)]);
+        eList[0].setSalary(57000);
+        eList[0].setDepartment(1);
+        System.out.println("Сотрудник с минимальной зарплатой : " + eList[searchLooser(eList)]);
         System.out.println("Сотрудник с максимальной зарплатой : " + eList[searchWinner(eList)]);
         System.out.println("Средняя зарплата = " + averageSalary(eList));
+
     }
 }

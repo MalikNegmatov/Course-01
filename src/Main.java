@@ -70,26 +70,35 @@ public class Main {
     }
     public static void searchDepartmentLooser(int d) {
         Employee[] o = departmentList(eList, d);
-        if ( searchLooser(o) != -1 ) {
-            System.out.println("Сотрудник с минимальной зарплатой отдела " + d + " : " + o[searchLooser(o)]);
-        }
+        if (sumID(o) > 0) {
+                System.out.println("Сотрудник с минимальной зарплатой отдела " + d + " : " + o[searchLooser(o)]);
+            }
         else {
             System.out.println("В отделе " + d + " нет сотрудников.");
         }
     }
     public static void searchDepartmentWinner(int d) {
         Employee[] o = departmentList(eList, d);
-        if ( searchWinner(o) != -1 ) {
+        if ( sumID(o) > 0 ) {
             System.out.println("Сотрудник с максимальной зарплатой : " + o[searchWinner(o)]);
         }
         else {
             System.out.println("В отделе " + d + " нет сотрудников.");
         }
     }
-    public static void allDepartmentSalary(int d){
+    public static void allDepartmentSalary(int d) {
         Employee[] o = departmentList(eList, d);
-        if ( allSalarySum(o) > 0 ) {
+        if ( sumID(o) > 0 ) {
             System.out.println("Сумма затрана на зарплату по отделу " + d + " = " + allSalarySum(o));
+        }
+        else {
+            System.out.println("В отделе " + d + " нет сотрудников.");
+        }
+    }
+    public static void averageDepartmentSalary(int d) {
+        Employee[] o = departmentList(eList, d);
+        if ( sumID(o) > 0 ) {
+            System.out.println("Средняя зарплата по отделу " + d + " = " + averageSalary(o));
         }
         else {
             System.out.println("В отделе " + d + " нет сотрудников.");
@@ -124,6 +133,8 @@ public class Main {
         eList[5] = new Employee("Алексей", "Петрович", "Сказка-на-Ночь", 4, 432211);
         allDepartmentSalary(4);
         System.out.println();
-
+        averageDepartmentSalary(2);
+        System.out.println();
+        averageDepartmentSalary(4);
     }
 }

@@ -174,4 +174,22 @@ public class EmployeeBook {
             }
         }
     }
+    private void modifyVictimD(String firstName, String middleName, String lastName, int department) {
+        for (int i = 0; i < 10; i++) {
+            if (eBook[i].getLastName().equals(lastName) && eBook[i].getFirstName().equals(firstName) && eBook[i].getMiddleName().equals(middleName) ) {
+                eBook[i].setDepartment(department);
+                return;
+            }
+        }
+        System.out.println("Сотрудник с такими данными ФИО в книге отсутствует");
+    }
+    private void modifyVictimS(String firstName, String middleName, String lastName, double salary) {
+        for (int i = 0; i < 10; i++) {
+            if (eBook[i].getLastName().equals(lastName) && eBook[i].getFirstName().equals(firstName) && eBook[i].getMiddleName().equals(middleName) ) {
+                eBook[i].setSalary(salary);
+                return;
+            }
+        }
+        System.out.println("Сотрудник с такими данными ФИО в книге отсутствует");
+    }
 }

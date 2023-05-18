@@ -50,11 +50,27 @@ public class Main {
             if ( o != null ) System.out.println(o);
         }
     }
-
     public static void indexSalary(Employee[] e, double percent) {
         for (Employee o : e) {
             if (o != null) o.setSalary(o.getSalary()*(1 + percent / 100));
         }
+    }
+    public static Employee[] departmentList (Employee[] e, int d) {
+        Employee[] r = new Employee[10];
+        int index = 0;
+        for (Employee o : e) {
+            if (o != null) {
+                if (o.getDepartment() == d) {
+                    r[index] = o;
+                    index++;
+                }
+            }
+        }
+        return r;
+    }
+    public static void searchDepartmentLooser(int d) {
+        Employee[] o = departmentList(eList, d);
+        System.out.println(o[searchLooser(o)]);
     }
     public static void main(String[] args) {
 
@@ -75,5 +91,7 @@ public class Main {
         System.out.println();
         indexSalary(eList, -12.2);
         printList(eList);
+        System.out.println();
+        searchDepartmentLooser(3);
     }
 }

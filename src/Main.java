@@ -125,6 +125,21 @@ public class Main {
             System.out.println("В отделе " + d + " нет сотрудников.");
         }
     }
+    public static void whoIsLooser( double w ) {
+        for (Employee o : eList) {
+            if ( o != null ) {
+                if (o.getSalary() < w) System.out.printf("%-3s%-12s%-12s%-12s%-10s\n", o.getEmployeeID(), o.getLastName(), o.getFirstName(), o.getMiddleName(), o.getSalary());
+            }
+        }
+    }
+    public static void whoIsWinner( double w ) {
+        for (Employee o : eList) {
+            if ( o != null ) {
+                if (o.getSalary() > w) System.out.printf("%-3s%-12s%-12s%-12s%-10s\n", o.getEmployeeID(), o.getLastName(), o.getFirstName(), o.getMiddleName(), o.getSalary());
+            }
+        }
+    }
+
     public static void main(String[] args) {
         eList[0] = new Employee("Арсений", "Петрович", "присказка", 2, 203912);
         eList[1] = new Employee("Виталий", "Петрович", "подсказка", 3, 123123);
@@ -160,5 +175,11 @@ public class Main {
         indexDepartmentSalary(4, 12.85);
         averageDepartmentSalary(4);
         printDepartment(4);
+        System.out.println();
+        printList(eList);
+        System.out.println();
+        whoIsLooser(120000.0);
+        System.out.println();
+        whoIsWinner(140000.0);
     }
 }

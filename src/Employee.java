@@ -5,10 +5,25 @@ public class Employee {
     private int department;     // отдел (1..5)
     private int salary;         // зарплата
     public static int id = 1;   //  статическая переменная-счетчик, отвечает за id
-    private final int employeeID = id;     // id сотрудника
+    private final int employeeID;     // id сотрудника
 
-    public Employee() {
 
+     /* Конструктор класса
+     */
+    public Employee(String firstName, String middleName, String lastName, int department, int salary) {
+        this.firstName = formatField(firstName);
+        this.middleName = formatField(middleName);
+        this.lastName = formatField(lastName);
+        this.salary = salary;
+        this.employeeID = id;
+        if ( checkDepartment(department) ) {
+            this.department = department;
+        }
+        else {
+            System.out.println("Номер отдела должен быть задан в диапазоне от 1 до 5");
+            System.out.println("Сотруднику присвоен номер отдела 5. Установите правильный номер отдела через сеттер");
+            this.department = 5;
+        }
         id++;
     }
     public String getFirstName() {
@@ -33,16 +48,30 @@ public class Employee {
         if ( checkDepartment(department) ) {
             this.department = department;
         }
-        else System.out.println("Значение отдела должно быть от 1 до 5");
+        else System.out.println("Номер отдела должен быть задан в диапазоне от 1 до 5");
     }
     public void setSalary(int salary) {
         if ( salary > 0 )
             this.salary = salary;
         else System.out.println("Зарплата не может быть отрицательной");
     }
-
     // Проверки на ошибки
+
+    /**
+     * Метод проверки вводимых значений в поле department
+     * @param department - поле должно принимать значения от 1 до 5
+     * @return возвращает true, если значение поля в диапазоне от 1 до 5
+     */
     private boolean checkDepartment(int department) {
         return ( department > 0 && department < 6 );
+    }
+
+    /**
+     * Метод форматирования вводимых значеий в поля ФИО
+     * @param field - строка переданная в конструктор
+     * @return возвращает в форматем первая заглавная, остальные строчные
+     */
+    public String formatField(String field) {
+        return field.substring(0, 1).toUpperCase() + field.substring(1).toLowerCase();
     }
 }

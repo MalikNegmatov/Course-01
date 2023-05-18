@@ -1,5 +1,15 @@
 public class Main {
     public static Employee[] eList = new Employee[10];
+
+    public static int allSalarySum(Employee[] e) {
+        int sum = 0;
+        for (Employee o : e) {
+            if ( o != null) {
+                sum += o.getSalary();
+            }
+        }
+        return sum;
+    }
     public static void main(String[] args) {
 
         eList[0] = new Employee("Арсений", "Петрович", "сказка", 2, 203912);
@@ -8,6 +18,7 @@ public class Main {
         System.out.println(eList[0]);
         System.out.println(eList[1]);
         System.out.println(eList[2]);
+        System.out.println(allSalarySum(eList));
     }
 
 }

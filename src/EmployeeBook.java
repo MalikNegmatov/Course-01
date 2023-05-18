@@ -1,7 +1,7 @@
 public class EmployeeBook {
-    private Employee[] eBook = new Employee[10];
+    private final Employee[] eBook = new Employee[10];
 
-    private double getSalarySum(Employee[] e) {
+    public double getSalarySum(Employee[] e) {
         double sum = 0.0;
         for (Employee o : e) {
             if (o != null) {
@@ -11,7 +11,7 @@ public class EmployeeBook {
         return sum;
     }
 
-    private int searchLooser(Employee[] e) {
+    public int searchLooser(Employee[] e) {
         double min = 500000.0;
         int index = -1;
         for (int i = 0; i < e.length; i++) {
@@ -23,7 +23,7 @@ public class EmployeeBook {
         return index;
     }
 
-    private int searchWinner(Employee[] e) {
+    public int searchWinner(Employee[] e) {
         double max = 0;
         int index = -1;
         for (int i = 0; i < e.length; i++) {
@@ -35,7 +35,7 @@ public class EmployeeBook {
         return index;
     }
 
-    private int sumID(Employee[] e) {
+    public int sumID(Employee[] e) {
         int sum = 0;
         for (Employee o : e) {
             if (o != null) sum++;
@@ -43,25 +43,30 @@ public class EmployeeBook {
         return sum;
     }
 
-    private double averageSalary(Employee[] e) {
+    public double averageSalary(Employee[] e) {
         if (sumID(e) != 0) {
             return getSalarySum(e) / sumID(e);
         } else return 0.0;
     }
 
-    private void printList(Employee[] e) {
+    public void printList(Employee[] e) {
         for (Employee o : e) {
             if (o != null) System.out.println(o);
         }
     }
+    public void printList() {
+        for (Employee o : eBook) {
+            if (o != null) System.out.println(o);
+        }
+    }
 
-    private void indexSalary(Employee[] e, double percent) {
+    public void indexSalary(Employee[] e, double percent) {
         for (Employee o : e) {
             if (o != null) o.setSalary(o.getSalary() * (1 + percent / 100));
         }
     }
 
-    private Employee[] departmentList(Employee[] e, int d) {
+    public Employee[] departmentList(Employee[] e, int d) {
         Employee[] r = new Employee[10];
         int index = 0;
         for (Employee o : e) {
@@ -75,7 +80,7 @@ public class EmployeeBook {
         return r;
     }
 
-    private void searchDepartmentLooser(int d) {
+    public void searchDepartmentLooser(int d) {
         Employee[] o = departmentList(eBook, d);
         if (sumID(o) > 0) {
             System.out.println("Сотрудник с минимальной зарплатой отдела " + d + " : " + o[searchLooser(o)]);
@@ -84,7 +89,7 @@ public class EmployeeBook {
         }
     }
 
-    private void searchDepartmentWinner(int d) {
+    public void searchDepartmentWinner(int d) {
         Employee[] o = departmentList(eBook, d);
         if (sumID(o) > 0) {
             System.out.println("Сотрудник с максимальной зарплатой : " + o[searchWinner(o)]);
@@ -93,16 +98,16 @@ public class EmployeeBook {
         }
     }
 
-    private void allDepartmentSalary(int d) {
+    public void allDepartmentSalary(int d) {
         Employee[] o = departmentList(eBook, d);
         if (sumID(o) > 0) {
-            System.out.println("Сумма затрана на зарплату по отделу " + d + " = " + getSalarySum(o));
+            System.out.println("Сумма затрат на зарплату по отделу " + d + " = " + getSalarySum(o));
         } else {
             System.out.println("В отделе " + d + " нет сотрудников.");
         }
     }
 
-    private void averageDepartmentSalary(int d) {
+    public void averageDepartmentSalary(int d) {
         Employee[] o = departmentList(eBook, d);
         if (sumID(o) > 0) {
             System.out.println("Средняя зарплата по отделу " + d + " = " + averageSalary(o));
@@ -111,7 +116,7 @@ public class EmployeeBook {
         }
     }
 
-    private void indexDepartmentSalary(int d, double p) {
+    public void indexDepartmentSalary(int d, double p) {
         Employee[] o = departmentList(eBook, d);
         if (sumID(o) > 0) {
             indexSalary(o, p);
@@ -133,7 +138,7 @@ public class EmployeeBook {
         }
     }
 
-    private void whoIsLooser(double w) {
+    public void whoIsLooser(double w) {
         for (Employee o : eBook) {
             if (o != null) {
                 if (o.getSalary() < w)
@@ -142,7 +147,7 @@ public class EmployeeBook {
         }
     }
 
-    private void whoIsWinner(double w) {
+    public void whoIsWinner(double w) {
         for (Employee o : eBook) {
             if (o != null) {
                 if (o.getSalary() > w)
@@ -151,7 +156,7 @@ public class EmployeeBook {
         }
     }
 
-    private void addVictim(String firstName, String middleName, String lastName, int department, int salary) {
+    public void addVictim(String firstName, String middleName, String lastName, int department, int salary) {
         for (int i = 0; i < 10; i++) {
             if (eBook[i] == null) {
                 eBook[i] = new Employee(firstName, middleName, lastName, department, salary);
@@ -160,21 +165,26 @@ public class EmployeeBook {
         }
         System.out.println("Книга заполнена");
     }
-    private void deleteVictim(String firstName, String middleName, String lastName) {
+    public void deleteVictim(String firstName, String middleName, String lastName) {
         for (int i = 0; i < 10; i++) {
-            if (eBook[i].getLastName().equals(lastName) && eBook[i].getFirstName().equals(firstName) && eBook[i].getMiddleName().equals(middleName) ) {
-                eBook[i] = null;
+            if ( eBook[i] != null ) {
+                if (eBook[i].getLastName().equals(lastName) && eBook[i].getFirstName().equals(firstName) && eBook[i].getMiddleName().equals(middleName) ) {
+                    eBook[i] = null;
+                    return;
+                }
             }
         }
+        System.out.println("Сотрудник с такими данными в книге отсутствует");
     }
-    private void deleteVictim(int id) {
-        for (int i = 0; i < 10; i++) {
+    public void deleteVictim(int id) {
+        for (int i = 0; i < 10; i++)
             if (eBook[i].getEmployeeID() == id) {
                 eBook[i] = null;
+                return;
             }
-        }
+        System.out.println("Сотрудник с таким id в книге отсутствует");
     }
-    private void modifyVictimD(String firstName, String middleName, String lastName, int department) {
+    public void modifyVictimD(String firstName, String middleName, String lastName, int department) {
         for (int i = 0; i < 10; i++) {
             if (eBook[i].getLastName().equals(lastName) && eBook[i].getFirstName().equals(firstName) && eBook[i].getMiddleName().equals(middleName) ) {
                 eBook[i].setDepartment(department);
@@ -183,7 +193,7 @@ public class EmployeeBook {
         }
         System.out.println("Сотрудник с такими данными ФИО в книге отсутствует");
     }
-    private void modifyVictimS(String firstName, String middleName, String lastName, double salary) {
+    public void modifyVictimS(String firstName, String middleName, String lastName, double salary) {
         for (int i = 0; i < 10; i++) {
             if (eBook[i].getLastName().equals(lastName) && eBook[i].getFirstName().equals(firstName) && eBook[i].getMiddleName().equals(middleName) ) {
                 eBook[i].setSalary(salary);
@@ -192,7 +202,7 @@ public class EmployeeBook {
         }
         System.out.println("Сотрудник с такими данными ФИО в книге отсутствует");
     }
-    private void printDepartments() {
+    public void printDepartments() {
         for ( int i = 1; i < 6; i++) {
             System.out.println("Список отдела " + i);
             printDepartment(i);

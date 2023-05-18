@@ -3,7 +3,7 @@ public class Employee {
     private final String middleName;  // Отчество
     private final String lastName;    // Фамилия
     private int department;     // отдел (1..5)
-    private int salary;         // зарплата
+    private double salary;         // зарплата
     public static int id = 1;   //  статическая переменная-счетчик, отвечает за id
     private final int employeeID;     // id сотрудника
 
@@ -45,7 +45,7 @@ public class Employee {
     public int getDepartment() {
         return department;
     }
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
     public int getEmployeeID() {
@@ -57,7 +57,7 @@ public class Employee {
         }
         else System.out.println("Номер отдела должен быть задан в диапазоне от 1 до 5");
     }
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         if ( salary > 0 )
             this.salary = salary;
         else System.out.println("Зарплата не может быть отрицательной");

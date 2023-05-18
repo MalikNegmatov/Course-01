@@ -11,7 +11,8 @@ public class Main {
         return sum;
     }
     public static int searchLooser(Employee[] e) {
-        int min = 500000, index=0;
+        double min = 500000.0;
+        int index=0;
         for (int i = 0; i < e.length; i++){
             if ( (e[i] != null) && (min > e[i].getSalary()) ) {
                 index = i;
@@ -21,7 +22,8 @@ public class Main {
         return index;
     }
     public static int searchWinner(Employee[] e) {
-        int max = 0, index=0;
+        double max = 0;
+        int index=0;
         for (int i = 0; i < e.length; i++){
             if ( (e[i] != null) && (max < e[i].getSalary()) ) {
                 index = i;
@@ -43,10 +45,15 @@ public class Main {
             return (double) allSalarySum(e) / sumID(e);
         } else return 0.0;
     }
-
     public static void printList(Employee[] e) {
         for (Employee o : e ) {
             if ( o != null ) System.out.println(o);
+        }
+    }
+
+    public static void indexSalary(Employee[] e, double percent) {
+        for (Employee o : e) {
+            if (o != null) o.setSalary(o.getSalary()*(1 + percent / 100));
         }
     }
     public static void main(String[] args) {
@@ -63,6 +70,10 @@ public class Main {
         System.out.println("Сотрудник с минимальной зарплатой : " + eList[searchLooser(eList)]);
         System.out.println("Сотрудник с максимальной зарплатой : " + eList[searchWinner(eList)]);
         System.out.println("Средняя зарплата = " + averageSalary(eList));
-
+        indexSalary(eList, 5.6);
+        printList(eList);
+        System.out.println();
+        indexSalary(eList, -12.2);
+        printList(eList);
     }
 }

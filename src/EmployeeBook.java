@@ -192,4 +192,10 @@ public class EmployeeBook {
         }
         System.out.println("Сотрудник с такими данными ФИО в книге отсутствует");
     }
+    private void printDepartments() {
+        for ( int i = 1; i < 6; i++) {
+            System.out.println("Список отдела " + i);
+            printDepartment(i);
+        }
+    }
 }

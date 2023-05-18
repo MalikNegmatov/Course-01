@@ -5,10 +5,28 @@ public class Employee {
     private int department;     // отдел (1..5)
     private int salary;         // зарплата
     public static int id = 1;   //  статическая переменная-счетчик, отвечает за id
-    private int employeeID;     // id сотрудника
+    private final int employeeID = id;     // id сотрудника
 
     public Employee() {
-        this.employeeID = id;
+
         id++;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getMiddleName() {
+        return middleName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public int getDepartment() {
+        return department;
+    }
+    public int getSalary() {
+        return salary;
+    }
+    public int getEmployeeID() {
+        return salary;
     }
 }

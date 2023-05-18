@@ -12,7 +12,7 @@ public class Main {
     }
     public static int searchLooser(Employee[] e) {
         double min = 500000.0;
-        int index=0;
+        int index = -1;
         for (int i = 0; i < e.length; i++){
             if ( (e[i] != null) && (min > e[i].getSalary()) ) {
                 index = i;
@@ -23,7 +23,7 @@ public class Main {
     }
     public static int searchWinner(Employee[] e) {
         double max = 0;
-        int index=0;
+        int index = -1;
         for (int i = 0; i < e.length; i++){
             if ( (e[i] != null) && (max < e[i].getSalary()) ) {
                 index = i;
@@ -70,7 +70,21 @@ public class Main {
     }
     public static void searchDepartmentLooser(int d) {
         Employee[] o = departmentList(eList, d);
-        System.out.println(o[searchLooser(o)]);
+        if ( searchLooser(o) != -1 ) {
+            System.out.println("Сотрудник с минимальной зарплатой отдела " + d + " : " + o[searchLooser(o)]);
+        }
+        else {
+            System.out.println("В отделе " + d + " нет сотрудников.");
+        }
+    }
+    public static void searchDepartmentWinner(int d) {
+        Employee[] o = departmentList(eList, d);
+        if ( searchWinner(o) != -1 ) {
+            System.out.println("Сотрудник с максимальной зарплатой : " + o[searchWinner(o)]);
+        }
+        else {
+            System.out.println("В отделе " + d + " нет сотрудников.");
+        }
     }
     public static void main(String[] args) {
         eList[0] = new Employee("Арсений", "Петрович", "присказка", 2, 203912);
@@ -92,5 +106,7 @@ public class Main {
         printList(eList);
         System.out.println();
         searchDepartmentLooser(3);
+        System.out.println();
+        searchDepartmentWinner(2);
     }
 }

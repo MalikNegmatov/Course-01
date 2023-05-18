@@ -30,17 +30,35 @@ public class Main {
         }
         return index;
     }
+
+    public static int sumID(Employee[] e) {
+        int sum = 0;
+        for ( Employee o : e ) {
+            if ( o != null ) sum++;
+        }
+        return sum;
+    }
+    public static double averageSalary(Employee[] e) {
+        if (sumID(e) != 0) {
+            return (double) allSalarySum(e) / sumID(e);
+        } else return 0.0;
+    }
+
+    public static void printList(Employee[] e) {
+        for (Employee o : e ) {
+            if ( o != null ) System.out.println(o);
+        }
+    }
     public static void main(String[] args) {
 
         eList[0] = new Employee("Арсений", "Петрович", "сказка", 2, 203912);
         eList[1] = new Employee("Виталий", "Петрович", "сказка", 3, 123123);
         eList[2] = new Employee("Корней", "Петрович", "сказка", 4, 142124);
-        System.out.println(eList[0]);
-        System.out.println(eList[1]);
-        System.out.println(eList[2]);
-        System.out.println(allSalarySum(eList));
-        System.out.println(eList[searchLooser(eList)]);
-        System.out.println(eList[searchWinner(eList)]);
+        eList[3] = new Employee("Лариса", "Петровна", "расказова", 5, 242124);
+        printList(eList);
+        System.out.println("Сумма затрат на зарплаты в месяц = " + allSalarySum(eList));
+        System.out.println("Сотрудник с минимальной зарплатой : " + eList[searchLooser(eList)]);
+        System.out.println("Сотрудник с максимальной зарплатой : " + eList[searchWinner(eList)]);
+        System.out.println("Средняя зарплата = " + averageSalary(eList));
     }
-
 }

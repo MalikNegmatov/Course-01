@@ -1,8 +1,8 @@
 public class Main {
     public static Employee[] eList = new Employee[10];
 
-    public static int allSalarySum(Employee[] e) {
-        int sum = 0;
+    public static double allSalarySum(Employee[] e) {
+        double sum = 0.0;
         for (Employee o : e) {
             if ( o != null) {
                 sum += o.getSalary();
@@ -42,7 +42,7 @@ public class Main {
     }
     public static double averageSalary(Employee[] e) {
         if (sumID(e) != 0) {
-            return (double) allSalarySum(e) / sumID(e);
+            return  allSalarySum(e) / sumID(e);
         } else return 0.0;
     }
     public static void printList(Employee[] e) {
@@ -86,6 +86,15 @@ public class Main {
             System.out.println("В отделе " + d + " нет сотрудников.");
         }
     }
+    public static void allDepartmentSalary(int d){
+        Employee[] o = departmentList(eList, d);
+        if ( allSalarySum(o) > 0 ) {
+            System.out.println("Сумма затрана на зарплату по отделу " + d + " = " + allSalarySum(o));
+        }
+        else {
+            System.out.println("В отделе " + d + " нет сотрудников.");
+        }
+    }
     public static void main(String[] args) {
         eList[0] = new Employee("Арсений", "Петрович", "присказка", 2, 203912);
         eList[1] = new Employee("Виталий", "Петрович", "подсказка", 3, 123123);
@@ -108,5 +117,13 @@ public class Main {
         searchDepartmentLooser(3);
         System.out.println();
         searchDepartmentWinner(2);
+        System.out.println();
+        allDepartmentSalary(2);
+        System.out.println();
+        eList[4] = new Employee("АлексанДР", "Петрович", "Недосказка", 4, 122124);
+        eList[5] = new Employee("Алексей", "Петрович", "Сказка-на-Ночь", 4, 432211);
+        allDepartmentSalary(4);
+        System.out.println();
+
     }
 }

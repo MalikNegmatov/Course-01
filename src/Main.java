@@ -104,6 +104,16 @@ public class Main {
             System.out.println("В отделе " + d + " нет сотрудников.");
         }
     }
+    public static void indexDepartmentSalary(int d, double p) {
+        Employee[] o = departmentList(eList, d);
+        if ( sumID(o) > 0 ) {
+            indexSalary(o, p);
+            printList(o);
+        }
+        else {
+            System.out.println("В отделе " + d + " нет сотрудников.");
+        }
+    }
     public static void main(String[] args) {
         eList[0] = new Employee("Арсений", "Петрович", "присказка", 2, 203912);
         eList[1] = new Employee("Виталий", "Петрович", "подсказка", 3, 123123);
@@ -135,6 +145,8 @@ public class Main {
         System.out.println();
         averageDepartmentSalary(2);
         System.out.println();
+        averageDepartmentSalary(4);
+        indexDepartmentSalary(4, 12.85);
         averageDepartmentSalary(4);
     }
 }

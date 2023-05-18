@@ -10,7 +10,6 @@ public class Main {
         }
         return sum;
     }
-
     public static int searchLooser(Employee[] e) {
         int min = 500000, index=0;
         for (int i = 0; i < e.length; i++){
@@ -21,7 +20,16 @@ public class Main {
         }
         return index;
     }
-
+    public static int searchWinner(Employee[] e) {
+        int max = 0, index=0;
+        for (int i = 0; i < e.length; i++){
+            if ( (e[i] != null) && (max < e[i].getSalary()) ) {
+                index = i;
+                max = e[i].getSalary();
+            }
+        }
+        return index;
+    }
     public static void main(String[] args) {
 
         eList[0] = new Employee("Арсений", "Петрович", "сказка", 2, 203912);
@@ -32,6 +40,7 @@ public class Main {
         System.out.println(eList[2]);
         System.out.println(allSalarySum(eList));
         System.out.println(eList[searchLooser(eList)]);
+        System.out.println(eList[searchWinner(eList)]);
     }
 
 }

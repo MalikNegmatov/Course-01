@@ -1,7 +1,7 @@
 public class Employee {
-    private String firstName;   // Имя
-    private String middleName;  // Отчество
-    private String lastName;    // Фамилия
+    private final String firstName;   // Имя
+    private final String middleName;  // Отчество
+    private final String lastName;    // Фамилия
     private int department;     // отдел (1..5)
     private int salary;         // зарплата
     public static int id = 1;   //  статическая переменная-счетчик, отвечает за id
@@ -49,7 +49,7 @@ public class Employee {
         return salary;
     }
     public int getEmployeeID() {
-        return salary;
+        return employeeID;
     }
     public void setDepartment(int department) {
         if ( checkDepartment(department) ) {
@@ -62,8 +62,11 @@ public class Employee {
             this.salary = salary;
         else System.out.println("Зарплата не может быть отрицательной");
     }
+    @Override
+    public String toString() {
+        return String.format("%-3s%-12s%-12s%-12s%-3s%-10s", this.getEmployeeID(), this.getLastName(), this.getFirstName(), this.getMiddleName(), this.getDepartment(), this.getSalary());
+    }
     // Проверки на ошибки
-
     /**
      * Метод проверки вводимых значений в поле department
      * @param department - поле должно принимать значения от 1 до 5

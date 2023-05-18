@@ -73,7 +73,6 @@ public class Main {
         System.out.println(o[searchLooser(o)]);
     }
     public static void main(String[] args) {
-
         eList[0] = new Employee("Арсений", "Петрович", "присказка", 2, 203912);
         eList[1] = new Employee("Виталий", "Петрович", "подсказка", 3, 123123);
         eList[2] = new Employee("Корней", "Петрович", "сказка", 4, 142124);

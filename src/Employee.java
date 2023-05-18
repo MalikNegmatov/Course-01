@@ -14,8 +14,16 @@ public class Employee {
         this.firstName = formatField(firstName);
         this.middleName = formatField(middleName);
         this.lastName = formatField(lastName);
-        this.salary = salary;
         this.employeeID = id;
+        id++;
+        if ( salary > 0 ) {
+            this.salary = salary;
+        }
+        else {
+            System.out.println("Зарплата сотрудника не может быть отрицательной.");
+            System.out.println("Установите зарплату сотрудника через сеттер");
+            this.salary = -1;
+        }
         if ( checkDepartment(department) ) {
             this.department = department;
         }
@@ -24,7 +32,6 @@ public class Employee {
             System.out.println("Сотруднику присвоен номер отдела 5. Установите правильный номер отдела через сеттер");
             this.department = 5;
         }
-        id++;
     }
     public String getFirstName() {
         return firstName;

@@ -160,5 +160,18 @@ public class EmployeeBook {
         }
         System.out.println("Книга заполнена");
     }
-
+    private void deleteVictim(String firstName, String middleName, String lastName) {
+        for (int i = 0; i < 10; i++) {
+            if (eBook[i].getLastName().equals(lastName) && eBook[i].getFirstName().equals(firstName) && eBook[i].getMiddleName().equals(middleName) ) {
+                eBook[i] = null;
+            }
+        }
+    }
+    private void deleteVictim(int id) {
+        for (int i = 0; i < 10; i++) {
+            if (eBook[i].getEmployeeID() == id) {
+                eBook[i] = null;
+            }
+        }
+    }
 }

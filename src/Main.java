@@ -11,7 +11,7 @@ public class Main {
         return sum;
     }
     public static int searchLooser(Employee[] e) {
-        double min = 500000.0;
+        double min = e[0];
         int index = -1;
         for (int i = 0; i < e.length; i++){
             if ( (e[i] != null) && (min > e[i].getSalary()) ) {
@@ -21,6 +21,7 @@ public class Main {
         }
         return index;
     }
+
     public static int searchWinner(Employee[] e) {
         double max = 0;
         int index = -1;
